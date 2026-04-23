@@ -14,7 +14,7 @@ const sampleNews = [
 
 export default function Home() {
   const [theme, setTheme] = useState<Theme>(useTheme() ? 'dark' : 'light');
-  const current = theme === useTheme().theme ? themes.light : themes.dark
+  const current = theme === useTheme().theme ? themes.dark : themes.light
   
 
   const features = [
@@ -35,8 +35,8 @@ export default function Home() {
 
       {/* Hero */}
       <div className="text-center space-y-4 py-12">
-        <h1 className={`text-5xl font-bold ${current.invt}`}>Welcome to PriceView</h1>
-        <p className={`text-lg max-w-2xl mx-auto ${current.invt}`}>
+        <h1 className={`text-5xl font-bold ${current.text}`}>Welcome to PriceView</h1>
+        <p className={`text-lg max-w-2xl mx-auto ${current.text}`}>
           A comprehensive financial platform for institutions and traders to track news, earnings, analyst changes, price moves and summarize it for easy digestion
         </p>
         <div className="flex gap-4 justify-center pt-4">
@@ -71,7 +71,7 @@ export default function Home() {
         <h2 className="text-lg font-bold mb-3">Latest Market News</h2>
         <div className="space-y-3">
           {sampleNews.map(({ color, time, title, body }) => (
-            <div key={title} className={`border-l-4 ${color} pl-3 py-2`}>
+            <div key={title} className={`border-l-4 ${color} pl-3 py-2 rounded-lg `} style={{background: `${current.button.features.background}`}}>
               <p className={`text-xs ${current.glass.color}`}>{time}</p>
               <p className={`font-semibold text-sm ${current.glass.color}`}>{title}</p>
               <p className={` text-xs mt-1 ${current.glass.color}`}>{body}</p>
@@ -87,7 +87,7 @@ export default function Home() {
         <Button href="/dashboard" variant="solid">Go to Dashboard</Button>
       </GlassCard>
 
-      <p className={`text-center text-xs mt-8 ${current.invt}`}>Designed by Req</p>
+      <p className={`text-center text-xs mt-8 ${current.text}`}>Designed by Req</p>
     </div>
   )
 }

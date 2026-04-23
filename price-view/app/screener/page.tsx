@@ -91,7 +91,7 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
 
 function SortIcon({ field, sortField, sortDir }: { field: string; sortField: string; sortDir: 'asc' | 'desc' }) {
   const [theme, setTheme] = useState<Theme>(useTheme() ? 'dark' : 'light');
-  const current = theme === useTheme().theme ? themes.light : themes.dark
+  const current = theme === useTheme().theme ? themes.dark : themes.light
 
   if (sortField !== field) return <span className={`${current.subText} ml-1`}>↕</span>
   return <span className={`${current.colored.blue} font-bold ml-1`}>{sortDir === 'asc' ? '↑' : '↓'}</span>
@@ -99,7 +99,7 @@ function SortIcon({ field, sortField, sortDir }: { field: string; sortField: str
 
 function ChangeCell({ val, pct }: { val: number | null; pct: number | null }) {
   const [theme, setTheme] = useState<Theme>(useTheme() ? 'dark' : 'light');
-  const current = theme === useTheme().theme ? themes.light : themes.dark
+  const current = theme === useTheme().theme ? themes.dark : themes.light
   
   if (val === null || pct === null) return <span className={`${current.invt}`}>—</span>
   const positive = pct >= 0
@@ -257,7 +257,8 @@ export default function Screener() {
                     <th
                       key={key}
                       onClick={() => handleSort(key)}
-                      className={`pb-2 text-center ${current.invt} font-bold text-xs cursor-pointer hover:${current.table.hover} transition select-none`}
+                      className={`pb-2 text-center ${current.invt} font-bold text-s cursor-pointer hover:${current.table.hover} transition select-none`}
+                        style={{ borderBottom: current.glass.border }}
                     >
                       {label}
                       <SortIcon field={key} sortField={sortField} sortDir={sortDir} />
@@ -271,7 +272,7 @@ export default function Screener() {
                     key={row.ticker}
                     onClick={() => router.push(`/details?symbol=${row.ticker}`)}
                     className="cursor-pointer group"
-                    style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+                    style={{ borderBottom: current.glass.border }}
                     onMouseEnter={e => (e.currentTarget.style.background = current.table.hover.background)}
                     onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
@@ -304,8 +305,7 @@ export default function Screener() {
 
         {/* Pagination */}
         {!loading && totalPages > 1 && (
-          <div className={`flex items-center justify-between pt-3 mt-3 text-xs ${current.invt}`}
-            style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className={`flex items-center justify-between pt-3 mt-3 text-xs ${current.invt}`}>
             <span>
               {(page - 1) * PAGE_SIZE + 1} – {Math.min(page * PAGE_SIZE, sorted.length)} of {sorted.length}
             </span>

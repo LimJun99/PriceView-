@@ -215,42 +215,6 @@ function DetailsContent() {
             </div>
           )}
 
-          {/* DROPDOWN RESULTS
-          {showDropdown && results.length > 0 && (
-            <div
-              className="absolute top-full left-0 right-0 mt-1 rounded-lg overflow-hidden z-50"
-              style={current.input.norm}
-            >
-              {results.map((result: any) => (
-                <button
-                  key={result.symbol}
-                  onClick={() => handleSelect(result.symbol)}
-                  className="w-full px-4 py-3 flex justify-between items-center text-left transition-all"
-                  style={{
-                    borderBottom: current.glass.border,
-                    cursor: 'pointer',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.background =
-                      theme === 'dark'
-                        ? 'rgba(0,0,0,0.1)'
-                        : 'rgba(0,0,0,0.1)')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.background = 'transparent')
-                  }
-                >
-                  <span className={`font-semibold text-sm ${current.text}`}>
-                    {result.symbol}
-                  </span>
-                  <span className={`text-xs ml-4 text-right ${current.mutedText}`}>
-                    {result.description}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )} */}
-
           {/* NO RESULTS */}
           {showDropdown &&
             results.length === 0 &&
@@ -281,7 +245,7 @@ function DetailsContent() {
           <div className="flex justify-between items-center">
             <div>
               <p className={`text-3xl font-bold ${current.colored.blue}`}>
-                ${quote.price.toFixed(2)}
+                ${Number(quote.price).toFixed(2)}
               </p>
               <p className={`text-sm ${isPositive ? current.colored.green : current.colored.red}`}>
                 {isPositive ? '+' : ''}{quote.change.toFixed(2)} ({quote.changePercent.toFixed(2)}%)

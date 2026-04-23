@@ -16,7 +16,7 @@ export const themes = {
     mutedText: 'text-white/30',
     glass: {
       background: 'rgba(235,235,235,0.05)',
-      border: '1px solid rgba(0,0,0,0.1)',
+      border: '1px solid rgba(0,0,0,0.3)',
       backdropFilter: 'blur(12px)',
       color:'#fff',
     },
@@ -68,7 +68,7 @@ export const themes = {
     mutedText: 'text-black-400',
     glass: {
       background: 'rgba(0,0,0,0.1)',
-      border: '1px solid rgba(0,0,0,0.1)',
+      border: '1px solid rgba(255,255,255,0.3)',
       backdropFilter: 'blur(12px)',
       color:'#000',
     },
@@ -390,6 +390,10 @@ export function NewsItem({
           theme === 'dark'
             ? '2px solid rgba(99,160,255,0.8)'
             : '2px solid #2563eb',
+        background:
+          theme === 'dark'
+            ? current.button.features.background
+            : current.button.features.background,
       }}
     >
       <p className={`text-xs ${current.subText}`}>
